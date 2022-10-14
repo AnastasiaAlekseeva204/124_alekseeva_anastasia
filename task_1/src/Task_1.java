@@ -1,16 +1,19 @@
 public class Task_1 implements Task_1_base {
     @Override
     public int subtask_1_if(int first, int second, int third) {
-        // Вычислить и вернуть минимальный из трех полученных аргументов (first, second, third)
-        // ------------------------------------------------------------------------------------
-        return 0; // Замените данный оператор кодом, решающим поставленную задачу.
+        if (first < second && first < third)
+            return first;
+        else if (second < first && second < third)
+            return second;
+        else
+            return third;
     }
     @Override
     public boolean subtask_2_if(int year) {
-        // Проверить, является ли год, переданный в параметре year, високосным.
-        // Високосный год - это год, кратный четырем, но не кратный 100, либо кратный 400
-        // ------------------------------------------------------------------------------------
-        return false; // Замените данный оператор кодом, решающим поставленную задачу.
+       if ((year % 4 == 0)&&(year % 100 != 0 )  || (year % 400 ==0))
+           return true;
+       else
+           return false;
     }
     @Override
     public int subtask_3_if(double x, double y, double left_up_x, double left_up_y, double width, double height) {
@@ -40,22 +43,37 @@ public class Task_1 implements Task_1_base {
     }
     @Override
     public String subtask_5_switch(int day_od_week) {
-        // По номеру дня недели day_od_week вернуть его название на русском языке, записанное
-        // с большой буквы. Дни едели отсчитываются с единицы. Если номер задан некорректно,
-        // вернуть строку "Ошибка"
-        // ------------------------------------------------------------------------------------
-        return ""; // Замените данный оператор кодом, решающим поставленную задачу.
+        if (day_od_week == 1) {
+            return "Понедельник";
+        } else if (day_od_week == 2){
+            return "Вторник";
+        } else if (day_od_week == 3) {
+            return "Среда";
+        } else if (day_od_week == 4) {
+            return "Четверг";
+        } else if (day_od_week == 5) {
+            return "Пятница";
+        } else if (day_od_week == 6) {
+            return "Суббота";
+        } else if (day_od_week == 7) {
+            return "Воскресенье";
+        } else {
+            return "Ошибка";
+        }
     }
     @Override
     public String subtask_6_switch(int direction) {
-        // По заданному направлению direction вернуть его название:
-        // 1 - север
-        // 2 - юг
-        // 3 - запад
-        // 4 - восток
-        // Во всех остальных случаях вернуть пустую строку
-        // ------------------------------------------------------------------------------------
-        return ""; // Замените данный оператор кодом, решающим поставленную задачу.
+        if (direction == 1) {
+            return "север";
+        } else if (direction == 2) {
+            return "юг";
+        } else if (direction == 3) {
+            return "запад";
+        } else if (direction == 4) {
+            return "восток";
+        } else {
+            return ""; // Замените данный оператор кодом, решающим поставленную задачу.
+        }
     }
     @Override
     public int subtask_7_if(double vx, double vy, double vz, double speed, double time, double wall) {
@@ -71,13 +89,6 @@ public class Task_1 implements Task_1_base {
     }
     @Override
     public int subtask_8_if(double k1, double b1, double k2, double b2) {
-        // Проверить, как друг относительно друга располагаются прямые y = k1*x + b1 и
-        // y = k2*x + b2. Вернуть
-        // 1 - если параллельны
-        // 2 - если пересекаются
-        // 3 - если совпадают
-        // Допустимой погрешностью при сравнении переменных типа double считать 0.000001
-        // ------------------------------------------------------------------------------------
-        return 0; // Замените данный оператор кодом, решающим поставленную задачу.
+    return 0; // Замените данный оператор кодом, решающим поставленную задачу.
     }
 }
