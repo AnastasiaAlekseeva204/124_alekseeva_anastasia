@@ -19,7 +19,7 @@ public class Task_1 implements Task_1_base {
     public int subtask_3_if(double x, double y, double left_up_x, double left_up_y, double width, double height) {
         double up_side = left_up_x+width, left_side = left_up_y-height;
         if(width == height)
-            if((up_side - x <= 0.000001  x-left_up_x <= 0.000001)  (left_up_y-y <= 0.000001 || y-left_side <= 0.000001))
+            if((up_side - x <= 0.000001 ||  x-left_up_x <= 0.000001) || (left_up_y-y <= 0.000001 || y-left_side <= 0.000001))
         return 0;
             else
         if(x > left_up_x && x < up_side && y < left_up_y && y > left_side)
