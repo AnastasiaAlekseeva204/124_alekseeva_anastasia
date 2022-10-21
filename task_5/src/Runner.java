@@ -5,7 +5,7 @@ public class Runner {
         Scanner scanner = new Scanner(System.in);
         System.out.println("¬ведите свое фамилию и им€");
         String name = scanner.nextLine();
-        Task_4 task = new Task_4();
-        Task_4_Tests.test(task, name);
+        Task_5 task = new Task_5();
+        Task_5_Tests.test(task, name);
     }
 }
