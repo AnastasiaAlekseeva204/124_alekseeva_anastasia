@@ -7,28 +7,28 @@ public class ArmorDestroyer extends BattleUnitBase{
     @Override
     public void specialAbility(BattleUnit[] ownTeam, BattleUnit[] enemyTeam) {
         int maxEnemyArmor = 0;
-        int number = 0;
+        int scor = 0;
         for (int i = 0; i < enemyTeam.length; i++){
             BattleUnit enemy = enemyTeam[i];
             if ((enemy.armor()>maxEnemyArmor) && (enemy.health()>0)){
                 maxEnemyArmor = enemy.armor();
-                number = i;
+                scor = i;
             }
         }
-        final BattleUnit enemy = enemyTeam[number];
-        double sstrength = (this.strength()*2);
-        double qstrength = (this.strength()/4);
-        if (sstrength < 1){
-            sstrength = 1;
+        final BattleUnit enemy = enemyTeam[scor];
+        double lstrength = (this.strength()*2);
+        double cstrength = (this.strength()/4);
+        if (lstrength < 1){
+            lstrength = 1;
         }
-        if (qstrength < 1){
-            qstrength = 1;
+        if (cstrength < 1){
+            cstrength = 1;
         }
         if (enemy.armor() > 0){
-            enemy.damageArmor((int) sstrength);
+            enemy.damageArmor((int) lstrength);
         }
         else {
-            enemy.takeDamage((int) qstrength);
+            enemy.takeDamage((int) cstrength);
         }
     }
     @Override

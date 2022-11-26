@@ -6,17 +6,17 @@ public class Infantryman extends task.BattleUnitBase{
     }
     @Override
     public void attack (BattleUnit other) {
-        double hstrength = (this.strength()/2);
-        double qstrength = (this.strength()/4);
-        if (hstrength < 1){
-            hstrength = 1;
+        double lstrength = (this.strength()/2);
+        double cstrength = (this.strength()/4);
+        if (lstrength < 1){
+            lstrength = 1;
         }
-        if (qstrength < 1){
-            qstrength = 1;
+        if (cstrength < 1){
+            cstrength = 1;
         }
         if (other.armor() > 0){
-            other.takeDamage((int) hstrength);
-            other.damageArmor((int) qstrength);
+            other.takeDamage((int) lstrength);
+            other.damageArmor((int) cstrength);
         }
         else {
             other.takeDamage((int) this.strength());
@@ -25,7 +25,7 @@ public class Infantryman extends task.BattleUnitBase{
     @Override
     public void specialAbility(BattleUnit[] ownTeam, BattleUnit[] enemyTeam){
     }
-   /** public String name(){
+   /* public String name(){
         return this.name();
     }
     public int health(){
