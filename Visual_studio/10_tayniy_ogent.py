@@ -1,11 +1,8 @@
-# Создаем список проверенных никнеймов
-verified_nicknames = ["Мавпродош", "Лорнектиф", "Древерол", "Фиригарпиг", "Клодобродыч"]
-
-# Запрашиваем у пользователя его никнейм
-user_nickname = input("Введите свой никнейм: ")
-
-# Проверяем, есть ли никнейм пользователя в списке проверенных
-if user_nickname in verified_nicknames:
-    print(f"Ты – свой. Приветствую, любезный {user_nickname}!")
-else:
-    print("Тут ничего нет. Еще есть вопросы?")
+def check_login(list_of_secrets,proverka):
+    if proverka in list_of_secrets:
+        print("Ты – свой. Приветствую, любезный ",proverka)
+    else:
+        print("Тут ничего нет. Еще есть вопросы?")
+list_of_secrets = ["Мавпродош","Лорнектиф","Древерол","Фиригарпиг"," Клодобродыч","Максим"]
+proverka = input("Введите свое имя: ")
+check_login(list_of_secrets, proverka)
