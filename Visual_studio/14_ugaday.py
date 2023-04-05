@@ -13,3 +13,5 @@ while(a!=temp_a):
     else:
         print("Вы угадали!","Количество попыток: ",k)
     k = k+1
+with open("game.txt","a",encoding = "utf-8") as f:
+    f.write(name+" " + str(k)+"\n")
