@@ -4,37 +4,61 @@ var py = 370;
 var sp;
 let timer;
 let fn;
-let scor;
+let score;
+var flag_game = 0;
 let rects = [];
-let countrect = 5;
+let countrect = 3;
 var scolor = ['#a24db2','#421f9c','#a61d15','black','white','#b11b51'];
 function setup(){
 	createCanvas(1000,500);
 	background('#abe2e9');
 	timer = new timing();
 	fn  = new fon();
-	scor = new scoring();
+	score = new scoring();
 //	r = new specrec();
     for(let i = 0; i<countrect;i++){
 		let myr = rectob.init();
 		let col = round(random(0,5));
-		console.log(col);
 		rects.push(new rectob(myr.x,myr.y,40,40,col));
 	}
-	console.log(rects);
+	//console.log(rects.length);
 }
 function draw(){
 	background('#abe2e9');
-	timer.show();
 	fn.showBg();
 	fn.showSun();
+	if(flag_game == 1){
+		noStroke();
+		fill('black');
+		textSize(35);
+		text('Игра окончена!',370,170);
+		textSize(30);
+		text('Ваш счет: '+score.s, 370, 210);
+		return;
+	}
+	timer.show();
+	score.show();
 	
 	noStroke();
 	fill('#e519bd');
 	ellipse(px,py,40,60);
+	for(let i = 0; i<countrect; i++){
+		if((px == round(rects[i].x)) && ((py-10) == round(rects[i].y))){
+			flag_game = 1;
+		}
+		
+	}
 	px = px+delta;
 	if (px >= 980 || px <=20){
 		delta = -delta;
+		if(score.s > 0 && (score.s % 3 == 0)){
+			countrect = countrect+1;
+		}
+		for(let i = 0; i<countrect; i++){
+			let myr  = rectob.init();
+			let col = round(random(0,5));
+			rects[i].setall(myr.x,myr.y,40,40,col);
+		}
 	}
 	for(let i = 0; i<countrect; i++){
 		rects[i].display();
@@ -45,6 +69,13 @@ class rectob{
 	constructor(x,y,w,h,col){
 		this.x = x;
 		this.y = 360;
+		this.w = w;
+		this.h = h;
+		this.col = col;
+	}
+	setall(x,y,w,h,col){
+		this.x = x;
+		this.y = y;
 		this.w = w;
 		this.h = h;
 		this.col = col;
@@ -64,12 +95,17 @@ class rectob{
 }
 class scoring{
 	constructor(){
+		this.s = 0;
     }
+	set(s){
+		this.s = s;
+	}
 	show(){
 		noStroke();
 		fill('black');
 		textSize(20);
-		s = 'Счет: ';
+		str = 'Счет: '+this.s;
+		text(str,10,50);
 	}
 }
 class timing {
@@ -138,4 +174,12 @@ function mousePressed() {
 }
 function mouseReleased(){
     py = py+50;	
+	for(let i = 0; i<countrect; i++){
+		var to1  = round(rects[i].x);
+		var from1 = to1+40;
+		if(px>=to1 && px<=from1){
+			score.set(score.s+1);
+			rects[i].setall(-40,0,40,40,1);
+		}
+	}
 }
