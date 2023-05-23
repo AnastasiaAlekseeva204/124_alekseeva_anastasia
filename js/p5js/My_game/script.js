@@ -1,7 +1,6 @@
 var px = 21
 var delta = 1;
 var py = 370;
-var sp;
 let timer;
 let fn;
 let score;
@@ -32,8 +31,9 @@ function draw(){
 		fill('black');
 		textSize(35);
 		text('Игра окончена!',370,170);
-		textSize(30);
+		textSize(28);
 		text('Ваш счет: '+score.s, 370, 210);
+		text('Время игры: '+timer.t+' секунд',370,240);
 		return;
 	}
 	timer.show();
@@ -51,13 +51,18 @@ function draw(){
 	px = px+delta;
 	if (px >= 980 || px <=20){
 		delta = -delta;
-		if(score.s > 0 && (score.s % 3 == 0)){
+		if(score.s > 0 && (score.s % 2 == 0)){
 			countrect = countrect+1;
 		}
+		flag = 0;
 		for(let i = 0; i<countrect; i++){
 			let myr  = rectob.init();
 			let col = round(random(0,5));
 			rects[i].setall(myr.x,myr.y,40,40,col);
+			if(countrect>rects.length && flag==0){
+              flag = 1;
+              rects.push(new rectob(myr.x,myr.y,40,40,col));
+            }
 		}
 	}
 	for(let i = 0; i<countrect; i++){
