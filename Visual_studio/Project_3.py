@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+import random
 class Animal:
     def __init__(self,name,age,species):
         self.name = name
@@ -38,11 +38,19 @@ class Reptile(Animal):
     def shed_skin(self,sh):
         print(self.name,"меняет обличие",sh)
 class Enclosure:
-    def __init__(self,size,temperature):
+    def __init__ (self,dict_ani):
+        self.dict_animals = {}
+        self.dict_params = {}
+    '''def __init__(self,size,temperature):
         self.size = size
-        self.temperature = temperature
+        self.temperature = temperature'''
     def add_animal(self,ad):
-        print(self.name,"добавили",ad)
+        print("Вы добавили животное")
+        dict_params = {"size": random.randint(10,100),"temp":random.randint(35,40)}
+        self.dict_animals[ad] = dict_params
+    def show(self):
+        for k in self.dict_animals:
+            print(k.name,self.dict_animals[k])
 class Zookeeper:
     def __init__(self,name,yearofexpert):
         self.name = name
@@ -60,3 +68,7 @@ bird.show()
 reptile = Reptile("Эквалипт",40,"Ящереобразный","черно-зеленая","не ядовит")
 reptile.eat("кузнечиков")
 reptile.show()
+en = Enclosure()
+en.add_animal(animal_1)
+en.add_animal(mamont)
+en.show()
