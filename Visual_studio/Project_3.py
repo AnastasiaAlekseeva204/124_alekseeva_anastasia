@@ -33,7 +33,20 @@ class Reptile(Animal):
         Animal.__init__(self,name,age,species)
         self.scolor = scolor
         self.tipevenom = tipevenom
-        
+    def lay_eggs(self,egg):
+        print(self.name,"сносит яиц:",egg)
+    def shed_skin(self,sh):
+        print(self.name,"меняет обличие",sh)
+class Enclosure:
+    def __init__(self,size,temperature):
+        self.size = size
+        self.temperature = temperature
+    def add_animal(self,ad):
+        print(self.name,"добавили",ad)
+class Zookeeper:
+    def __init__(self,name,yearofexpert):
+        self.name = name
+        self.yearofexpert = yearofexpert
 animal_1 = Animal("Луни",4,"шотландский")
 animal_1.eat("курица")
 animal_1.show()
