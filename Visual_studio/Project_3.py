@@ -38,7 +38,7 @@ class Reptile(Animal):
     def shed_skin(self,sh):
         print(self.name,"меняет обличие",sh)
 class Enclosure:
-    def __init__ (self,dict_ani):
+    def __init__ (self):
         self.dict_animals = {}
         self.dict_params = {}
     '''def __init__(self,size,temperature):
@@ -48,13 +48,30 @@ class Enclosure:
         print("Вы добавили животное")
         dict_params = {"size": random.randint(10,100),"temp":random.randint(35,40)}
         self.dict_animals[ad] = dict_params
+    def remove_animal(self,remove_animal):
+        if remove_animal in self.dict_animals:
+            print("Забрали из больницы", remove_animal.name)
+            self.dict_animals.pop(remove_animal)
+        else:
+            print("Животного нет в больнице")
     def show(self):
         for k in self.dict_animals:
             print(k.name,self.dict_animals[k])
-class Zookeeper:
-    def __init__(self,name,yearofexpert):
-        self.name = name
-        self.yearofexpert = yearofexpert
+class Zoo:
+    def __init__(self):
+        self.list_animal =[]
+    def remove_animal(self,remove_animal):
+        if remove_animal in self.list_animal:
+            print("Забрали из зоопарка",remove_animal.name)
+            self.list_animal.remove(remove_animal)
+        else:
+            print("Такого животного нет в зоопарке")
+    def add_animals(self,add):
+        print("Вы добавили животного")
+        self.list_animal.append(add)
+    def show(self):
+        for el in self.list_animal:
+            print(el.name)
 animal_1 = Animal("Луни",4,"шотландский")
 animal_1.eat("курица")
 animal_1.show()
@@ -72,3 +89,13 @@ en = Enclosure()
 en.add_animal(animal_1)
 en.add_animal(mamont)
 en.show()
+en.remove_animal(animal_1)
+en.remove_animal(animal_1)
+en.show()
+z = Zoo()
+z.add_animals(animal_1)
+z.add_animals(bird)
+z.show()
+z.remove_animal(bird)
+z.remove_animal(bird)
+z.show()
